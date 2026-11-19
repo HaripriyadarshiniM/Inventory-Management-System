@@ -91,7 +91,7 @@ http://127.0.0.1:8000/
 
 **Haripriyadarshini M**
 
-GitHub: [HaripriyadarshiniM](https://github.com/HaripriyadarshiniM)
+GitHub: https://github.com/HaripriyadarshiniM/Inventory-Management-System
 
 ---
 

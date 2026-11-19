@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="category-container">
+
+    <h2>Product Categories</h2>
+    <p>Choose a category to explore products</p>
+
+    <div class="category-grid">
+
+        {% for category in categories %}
+
+        <a href="{% url 'home' %}?category={{ category.name|urlencode }}"
+           class="category-card">
+
+            <h3>{{ category.name }}</h3>
+            <span>View Products →</span>
+
+        </a>
+
+        {% empty %}
+            <p>No categories available.</p>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

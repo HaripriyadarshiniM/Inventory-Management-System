@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="home-container">
+
+    <h2>Product List</h2>
+    <p>Manage and view all available products</p>
+
+    <div class="product-container">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            <h3>{{ product.name }}</h3>
+
+            <p><strong>SKU:</strong> {{ product.sku }}</p>
+
+            <p><strong>Stock:</strong> {{ product.quantity_in_stock }}</p>
+
+            <form method="POST" action="{% url 'product-detail' %}">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                <button type="submit" class="view-button">
+                    View Details
+                </button>
+            </form>
+
+        </div>
+
+        {% empty %}
+            <p>No products available.</p>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

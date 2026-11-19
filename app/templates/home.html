@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="home-container">
+
+    <h2>Welcome to Inventory Management</h2>
+
+    <div class="category-buttons">
+        <a href="{% url 'home' %}">All Products</a>
+        <a href="{% url 'home' %}?category=Electronics">Electronics</a>
+        <a href="{% url 'home' %}?category=Furniture">Furniture</a>
+    </div>
+
+    {% if category_name %}
+        <h3>{{ category_name }} Products</h3>
+    {% else %}
+        <h3>Low Stock Products</h3>
+    {% endif %}
+
+    <div class="product-container">
+
+        {% for product in products %}
+
+        <div class="product-card">
+            <h3>{{ product.name }}</h3>
+            <p>Available Stock: {{ product.quantity_in_stock }}</p>
+
+            <form method="POST" action="{% url 'product-detail' %}">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                <button type="submit" class="view-button">View Details</button>
+            </form>
+
+            {% if product.quantity_in_stock <= 10 %}
+                <span class="low-stock">Low Stock</span>
+            {% else %}
+                <span class="in-stock">In Stock</span>
+            {% endif %}
+        </div>
+
+        {% empty %}
+            <p>No products available in this category.</p>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

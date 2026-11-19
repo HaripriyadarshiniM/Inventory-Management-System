@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="detail-container">
+
+    <h2>Product Details</h2>
+
+    <div class="detail-card">
+
+        <h3>{{ product.name }}</h3>
+
+        <div class="detail-row">
+            <strong>SKU:</strong>
+            <span>{{ product.sku }}</span>
+        </div>
+
+        <div class="detail-row">
+            <strong>Supplier:</strong>
+            <span>{{ product.supplier }}</span>
+        </div>
+
+        <div class="detail-row">
+            <strong>Category:</strong>
+            <span>{{ product.category }}</span>
+        </div>
+
+        <div class="detail-row">
+            <strong>Price:</strong>
+            <span>₹{{ product.price }}</span>
+        </div>
+
+        <div class="detail-row">
+            <strong>Quantity in Stock:</strong>
+            <span>{{ product.quantity_in_stock }}</span>
+        </div>
+
+        <a href="{% url 'home' %}" class="back-button">
+            Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
